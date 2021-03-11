@@ -55,22 +55,6 @@ class FlexServer : LicenseServer {
             $this.LicenseFile = ((($QueryResultSet[5]) -Split ":\s")[1]).Trim().TrimEnd(":")
             $this.DaemonName = (($QueryResultSet[11]).Split()[0]).TrimEnd(":")
 
-           
-            # if ($QueryResultSet[11] -like '*down*') {
-            #     $this.DaemonStatus = "DOWN (review license file & logs)"
-            #     $this.DaemonVersion = "DOWN"
-            # } 
-           
-            # { else if($QueryResultSet[11] -like '*Cannot*') {
-            #         $this.DaemonStatus = "COMMS ERROR, vendor daemon port may be misconfigured."
-            #         $this.DaemonVersion = "COMMS ERROR, vendor daemon port may be misconfigured."
-            #     }     
-            #     else {
-            #         $this.DaemonStatus = ($QueryResultSet[11]).Split()[1]
-            #         $this.DaemonVersion = ($QueryResultSet[11]).Split()[2] 
-            #     }
-            # }
-
             switch -Wildcard ($QueryResultSet[11]) {
 
                 # LMGRD is responding but the vendor daemon has exited or not started
